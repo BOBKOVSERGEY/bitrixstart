@@ -1,6 +1,7 @@
 <?
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
   die();
+$curPage = $APPLICATION->GetCurPage(true);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -50,4 +51,17 @@ if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	false
 );?>
   </div>
+
+  <?if ($curPage != SITE_DIR."index.php"):?>
+    <div id="navigation">
+      <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array(
+        "START_FROM" => "0",
+        "PATH" => "",
+        "SITE_ID" => "s1"
+      ),
+        false,
+        Array('HIDE_ICONS' => 'N')
+      );?>
+    </div>
+  <?endif?>
 						
