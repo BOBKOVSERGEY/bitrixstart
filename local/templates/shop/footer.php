@@ -85,6 +85,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
  <script src="<?=SITE_TEMPLATE_PATH?>/js/util.js"></script>
  <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
  <script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
+ <script type="text/javascript">jssor_1_slider_init();</script>
 
  </body>
 </html>

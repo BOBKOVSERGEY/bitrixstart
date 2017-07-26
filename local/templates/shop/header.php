@@ -20,6 +20,86 @@ $curPage = $APPLICATION->GetCurPage(true);
   <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie8.css"/><![endif]-->
   <!--[if lte IE 9]>
   <link rel="stylesheet" href="<?=SITE_TEMPLATE_PATH?>/css/ie9.css"/><![endif]-->
+  <script src="<?=SITE_TEMPLATE_PATH?>/js/jssor.slider-25.2.0.min.js"></script>
+  <script type="text/javascript">
+    jssor_1_slider_init = function() {
+
+      var jssor_1_SlideoTransitions = [
+        [{b:900,d:2000,x:-379,e:{x:7}}],
+        [{b:900,d:2000,x:-379,e:{x:7}}],
+        [{b:-1,d:1,o:-1,sX:2,sY:2},{b:0,d:900,x:-171,y:-341,o:1,sX:-2,sY:-2,e:{x:3,y:3,sX:3,sY:3}},{b:900,d:1600,x:-283,o:-1,e:{x:16}}]
+      ];
+
+      var jssor_1_options = {
+        $AutoPlay: 1,
+        $SlideDuration: 800,
+        $SlideEasing: $Jease$.$OutQuint,
+        $CaptionSliderOptions: {
+          $Class: $JssorCaptionSlideo$,
+          $Transitions: jssor_1_SlideoTransitions
+        },
+        $ArrowNavigatorOptions: {
+          $Class: $JssorArrowNavigator$
+        },
+        $BulletNavigatorOptions: {
+          $Class: $JssorBulletNavigator$
+        }
+      };
+
+      var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+      /*#region responsive code begin*/
+      /*remove responsive code if you don't want the slider scales while window resizing*/
+      function ScaleSlider() {
+        var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+        if (refSize) {
+          refSize = Math.min(refSize, 3000);
+          jssor_1_slider.$ScaleWidth(refSize);
+        }
+        else {
+          window.setTimeout(ScaleSlider, 30);
+        }
+      }
+      ScaleSlider();
+      $Jssor$.$AddEvent(window, "load", ScaleSlider);
+      $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+      $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+      /*#endregion responsive code end*/
+    };
+  </script>
+  <style>
+    /* jssor slider loading skin double-tail-spin css */
+
+    .jssorl-004-double-tail-spin img {
+      animation-name: jssorl-004-double-tail-spin;
+      animation-duration: 1.2s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes jssorl-004-double-tail-spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+
+    .jssorb051 .i {position:absolute;cursor:pointer;}
+    .jssorb051 .i .b {fill:#fff;fill-opacity:0.5;stroke:#000;stroke-width:400;stroke-miterlimit:10;stroke-opacity:0.5;}
+    .jssorb051 .i:hover .b {fill-opacity:.7;}
+    .jssorb051 .iav .b {fill-opacity: 1;}
+    .jssorb051 .i.idn {opacity:.3;}
+
+    .jssora051 {display:block;position:absolute;cursor:pointer;}
+    .jssora051 .a {fill:none;stroke:#fff;stroke-width:360;stroke-miterlimit:10;}
+    .jssora051:hover {opacity:.8;}
+    .jssora051.jssora051dn {opacity:.5;}
+    .jssora051.jssora051ds {opacity:.3;pointer-events:none;}
+  </style>
 </head>
 <body>
 <div id="panel">
@@ -53,7 +133,7 @@ $curPage = $APPLICATION->GetCurPage(true);
   </div>
 
   <?if ($curPage != SITE_DIR."index.php"):?>
-    <div id="navigation">
+    <div id="navigation" class="container">
       <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "", array(
         "START_FROM" => "0",
         "PATH" => "",
@@ -64,4 +144,3 @@ $curPage = $APPLICATION->GetCurPage(true);
       );?>
     </div>
   <?endif?>
-						
